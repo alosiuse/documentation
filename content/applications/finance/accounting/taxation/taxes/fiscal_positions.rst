@@ -3,21 +3,21 @@ Fiscal positions (tax and account mapping)
 ==========================================
 
 Default taxes and accounts are set on products and customers to create new transactions on the fly.
-However, you might have to use different taxes and record the transactions on different accounts,
-according to your customers' and providers' localizations and business types.
+However, different taxes and different accounts for transactions might be necessary, according to
+customers' and providers' localizations and business types.
 
-**Fiscal Positions** allow you to create *sets of rules* to automatically adapt the taxes and the
-accounts used for a transaction.
+**Fiscal Positions** allow to create sets of rules to automatically adapt the taxes and the accounts
+used for a transaction.
 
 .. image:: fiscal_positions/fiscal-positions-intra-community.png
    :align: center
-   :alt: Example: Belgian to Intra-Community tax mapping with Fiscal Positions in Odoo Accounting
+   :alt:   Example: Belgian to Intra-Community tax mapping with Fiscal Positions in Odoo Accounting
 
 They can be applied in various ways:
 
-- :ref:`automatically applied, based on some rules <fiscal_positions/automatic>`
-- :ref:`manually applied on a transaction <fiscal_positions/partner>`
-- :ref:`assigned to a partner, on its contact form <fiscal_positions/transaction>`
+- :ref:`Automatically applied <fiscal_positions/automatic>`
+- :ref:`Manually applied <fiscal_positions/partner>`
+- :ref:`Assigned to a partner <fiscal_positions/transaction>`
 
 .. note::
    A few Fiscal Positions are already preconfigured on your database, as part of your :ref:`fiscal
@@ -28,17 +28,26 @@ Configuration
 
  .. _fiscal_positions/mapping:
 
-Tax and Account Mapping
+Tax and account mapping
 -----------------------
 
-To edit or create a Fiscal Position, go to :menuselection:`Accounting --> Configuration --> Fiscal
-Positions`, and open the entry you want to modify or click on *Create*.
+To edit or create a Fiscal position, go to :menuselection:`Accounting --> Configuration --> Fiscal
+Positions`, and open the entry you want to modify or click on :guilabel:`New`.
 
 The mapping of taxes and accounts is based on the default taxes and accounts defined in the
 products' forms.
 
 - To map to another tax or account, fill out the right column (**Tax to Apply**/**Account to Use
   Instead**).
+
+.. image:: fiscal_positions/fiscal_positions_mapping.png
+   :align: center
+   :alt:   Tax mapping for fiscal positions
+
+.. image:: fiscal_positions/fiscal-positions-account-mapping.png
+   :align: center
+   :alt:   Account mapping for fiscal positions
+
 - To remove a tax, rather than replacing it with another, leave the field **Tax to Apply** empty.
 - To replace a tax with multiple other taxes, add multiple lines with the same **Tax on Product**.
 
