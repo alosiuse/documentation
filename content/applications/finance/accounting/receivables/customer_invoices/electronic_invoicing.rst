@@ -20,15 +20,12 @@ Odoo supports, among others, the following formats.
 
    * - Format Name
      - Applicability
-   * - Factur-X (PDF/A-3)
-     - For French and German companies
-   * - Peppol BIS Billing 3.0 (UBL)
-     - For companies whose countries are part of the `EAS list
-       <https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/>`_
-   * - E-FFF
-     - For Belgian companies
+   * - Factur-X (CII)
+     - For any partner
+   * - Peppol BIS Billing 3.0
+     - For any partner
    * - XRechnung (UBL)
-     - For German companies
+     - For any partner
    * - Fattura PA (IT)
      - For Italian companies
    * - CFDI (4.0)
@@ -50,7 +47,7 @@ Odoo supports, among others, the following formats.
    * - SG BIS Billing 3.0
      - For Singaporean companies
    * - A-NZ BIS Billing 3.0
-     - For Australian/New Zealand companies
+     - For any partner
 
 .. seealso::
    :ref:`fiscal_localizations/packages`
@@ -60,24 +57,53 @@ Odoo supports, among others, the following formats.
 Configuration
 =============
 
-Go to :menuselection:`Accounting --> Configuration --> Journals --> Customer Invoices --> Advanced
-Settings --> Electronic Invoicing` and enable the formats you need for this journal.
+Customer-specific electronic invoicing formats are available by going to :menuselection:`Accounting
+--> Customers --> Customers`. Once in the customer view, in the :guilabel:`Accounting` tab the specific
+electronic format can be chosen.
 
-.. image:: electronic_invoicing/formats.png
+.. image:: electronic_invoicing/partner-form-view.png
    :align: center
    :alt: Select the EDI format you need
 
-Once an electronic invoicing format is enabled, XML documents are generated when clicking on
-:guilabel:`Confirm` in documents such as invoices, credit notes, etc. These documents are either
-visible in the attachment section, or embedded in the PDF.
+Peppol formats
+--------------
+
+Use the fields :guilabel:`Peppol e-address (EAS)` (`list <https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/>`_)
+and :guilabel:`Peppol Endpoint` to identify the recipient in the Peppol Network.
+
+.. example::
+   .. list-table::
+      :header-rows: 1
+
+      * - Partner's country
+        - Peppol e-address (EAS)
+        - Peppol Endpoint
+      * - Luxembourg
+        - 9938 - Luxemburg VAT number
+        - a valid Luxemburgish VAT number
+      * - Netherlands
+        - 0190 - Dutch Originator's Identification Number
+        - a valid OIN number
+      * - Belgium
+        - 9925 - Belgium VAT number
+        - a valid Belgian VAT number
 
 .. note::
-   - For E-FFF, the xml file only appears after having generated the PDF (:guilabel:`Print` or
-     :guilabel:`Send & Print` button), since the PDF needs to be embedded inside the xml.
-   - Every PDF generated from Odoo contains a :guilabel:`Factur-X` XML file (for interoperability purpose).
-     For German and French companies, the option :guilabel:`Factur-X (PDF/A-3)` in addition enables
-     validation checks on the invoice and generates a PDF/A-3 compliant file, required by plaftorms like Chorus Pro.
-   - The formats available depend on the country registered in your company's :guilabel:`General
-     Information`.
-   - Odoo supports the **Peppol BIS Billing 3.0** format that can be used via existing access
-     points.
+   If **Factur-X (CII)** is selected, the invoice PDF will be PDF/A3 compliant.
+
+Other formats
+-------------
+
+For the other formats, go to :menuselection:`Accounting --> Configuration --> Journals --> Customer
+Invoices --> Advanced Settings --> Electronic Invoicing` and enable the formats you need for this
+journal.
+
+Generating an E-invoice
+-----------------------
+
+Use the :guilabel:`Send & Print` button on invoices to select the documents to be generated.
+
+.. image:: electronic_invoicing/send-and-print-wizard.png
+   :align: center
+   :width: 80%
+   :alt: Check the box's format to generate the attachment
